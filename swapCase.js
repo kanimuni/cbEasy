@@ -14,6 +14,8 @@ var swapCase = function(str) {
     	} else {
     		newstring = newstring + str.charAt(i).toUpperCase();
     	}
+    } else {
+    	newstring = newstring +str.charAt(i);
     }
   }
   return newstring;
