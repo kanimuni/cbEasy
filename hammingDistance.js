@@ -20,3 +20,5 @@ var hammingDistance = function(strArr) {
   }
   return hdcount;
 };
+
+// strArr[0][i] would have done the same thing
