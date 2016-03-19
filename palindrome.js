@@ -29,6 +29,16 @@ var palindrome = function(string) {
 		}
 	}
 
+	if (str.charAt(0) !== str.slice(-1)) {
+    return false;
+  }
+
 	return palindrome(str.slice(++strStartIndex, --strLength));
 
 };
+
+console.log( palindrome("anna") );
+console.log( palindrome("ana") );
+console.log( palindrome("racecar") );
+console.log( palindrome("race car") );
+console.log( palindrome("never odd or even") );

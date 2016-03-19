@@ -11,17 +11,15 @@
 // Input = "coder","byte","code"     Output = "code"
 // Input = "abc","defg","z","hijk"   Output = "abc"
 
-var thirGreatest = function(strArr) {
-	var tempObj = {};
-	var newArr = [];
-	for(var i=0; i<strArr.length; i++) {
-		tempObj[strArr[i]] = strArr[i].length;
-	}
-	for(var j=0; j<strArr.length; j++) {
-		newArr.push([ strArr[j].length , strArr[j] ]);
-		//newArr.push("[" + strArr[j].length + "," + strArr[j] + "]");
-	}
-	console.log(newArr);
-	console.log(tempObj);
-  return (newArr.sort())[((newArr.sort()).length)-3][1];
+
+var thirGreatest = function(array) {
+	return array.reduce(function(accumulator, value, key) {
+		if(value.length > accumulator.length) {
+			return value;
+		} else {
+			return accumulator;
+		}
+	}, "");
 };
+
+console.log ( thirGreatest(["coder","byte","code"]) );
