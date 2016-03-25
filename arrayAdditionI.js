@@ -9,19 +9,39 @@
 // Input = 3,5,-1,8,12  Output = "true"
 
 
-var numMax = function(arr) {
-	return reduce(arr, function(accumulator, value, key) {
-		if (value > accumulator) {
-			return value;
-		} else {
-			return accumulator;
-		}
-	});
-};
 
-var arrayAdditionI = function(array) {
-  var sortArray = array.sort();
-  var maxNum = numMax(array);
+function arrayAdditionI(array) {
+  var result = [];
+  var maxNum = array.reduce(function(accumulator, item) {
+	               if(accumulator > item) {
+	              	return accumulator;
+	              } else {
+	              	return item;
+	              }
+                });
 
+  var innerFunction = function(combination, arr) {
+    for (var i = 0; i < arr.length; i++) {
+      result.push(combination.concat(arr[i]));
+      innerFunction(combination.concat(arr[i]), arr.slice(i + 1));
+    }
+  };
   
-};
+  innerFunction([], array);
+
+  return result.map(function(collection) {
+  return collection.reduce(function(accumulator, item) {
+    return accumulator += item;
+  }, 0);
+}).reduce(function(accumulator, item){
+  if( (accumulator === true) || (item === 11) ) {
+    return true;
+  } else {
+    return false;
+  }
+},false);
+
+}
+
+console.log(arrayAdditionI([5,7,16,1,2]));
+console.log(arrayAdditionI([3,5,-1,8,12]));
